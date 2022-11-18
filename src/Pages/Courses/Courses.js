@@ -1,11 +1,11 @@
 import './index.css';
-import FilledButton from "../../components/FilledButton/FilledButton";
+import Button from "../../components/Button/Button";
 
 const Courses = () => {
   return (
     <div className="page">
       <div className="content-header">
-        <FilledButton text="أضف درس جديد" />
+        <Button title="أضف درس جديد" type="filled" />
         <h1>أكملْ دورة اللغة الإنجليزية</h1>
       </div>
     </div>

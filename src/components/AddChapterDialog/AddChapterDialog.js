@@ -1,14 +1,13 @@
 import "./index.css";
-import FilledButton from "../FilledButton/FilledButton";
+import Button from "../Button/Button";
 import { useEffect, useState } from "react";
 
-const AddChapterDialog = () => {
+const AddChapterDialog = ({closeModal}) => {
   const [name, setName] = useState("لم يتم إختيار ملف");
   const [selectedFile, setSelectedFile] = useState(null);
   const [imgSrc, setImgSrc] = useState(null);
 
   useEffect(() => {
-    console.log(selectedFile);
     if (selectedFile?.name) {
       setName(selectedFile?.name);
       readFile(selectedFile);
@@ -36,7 +35,7 @@ const AddChapterDialog = () => {
       <div className="container">
         <header>
           <h1>أضف فصل جديد</h1>
-          <img src="assets/icons/close.svg" alt="close dialog" />
+          <img src="assets/icons/close.svg" alt="close dialog" onClick={closeModal}/>
         </header>
         <div className="upload-pic">
           <img
@@ -76,7 +75,8 @@ const AddChapterDialog = () => {
           ></textarea>
         </div>
         <div className="actions">
-          <FilledButton text="حفظ" />
+          <Button title="حفظ" className="actions-first-btn" type="filled"/>
+          <Button title="إلغاء" type="empty" action={closeModal}/>
         </div>
       </div>
     </div>
