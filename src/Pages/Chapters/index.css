@@ -1,0 +1,21 @@
+.content-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 33px;
+}
+.content-header h1 {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+  text-transform: capitalize;
+}
+
+.chapters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 26px;
+  flex-direction: row-reverse;
+  overflow-y: scroll;
+  height: 70vh;
+}
