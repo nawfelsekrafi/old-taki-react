@@ -1,7 +1,6 @@
 import './index.css';
 
 const Chapter = ({title, image, description}) => {
-  console.log(title);
   return (
     <div className="chapter">
       <img src={image} alt={title} />
