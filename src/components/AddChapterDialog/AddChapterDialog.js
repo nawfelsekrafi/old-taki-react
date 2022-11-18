@@ -2,7 +2,7 @@ import "./index.css";
 import Button from "../Button/Button";
 import { useEffect, useState } from "react";
 
-const AddChapterDialog = ({closeModal}) => {
+const AddChapterDialog = ({closeModal, createChapter, editChapterDescription, editChapterTitle, setImage}) => {
   const [name, setName] = useState("لم يتم إختيار ملف");
   const [selectedFile, setSelectedFile] = useState(null);
   const [imgSrc, setImgSrc] = useState(null);
@@ -21,6 +21,7 @@ const AddChapterDialog = ({closeModal}) => {
       "load",
       () => {
         setImgSrc(reader.result);
+        setImage(imgSrc);
       },
       false
     );
@@ -60,13 +61,13 @@ const AddChapterDialog = ({closeModal}) => {
           <label htmlFor="chapterName" className="inputLabel">
             إسم الفصل
           </label>
-          <input dir="rtl" type="text" name="chapterName" id="chapterName" />
+          <input dir="rtl" type="text" onChange={(e)=>{editChapterTitle(e.target.value)}} name="chapterName" id="chapterName" />
         </div>
         <div className="chapter-description">
           <label htmlFor="chapterDescription" className="inputLabel">
             وصف
           </label>
-          <textarea
+          <textarea onChange={(e)=>{editChapterDescription(e.target.value)}}
             dir="rtl"
             name="chapterDescription"
             id="chapterDescription"
@@ -75,7 +76,7 @@ const AddChapterDialog = ({closeModal}) => {
           ></textarea>
         </div>
         <div className="actions">
-          <Button title="حفظ" className="actions-first-btn" type="filled"/>
+          <Button title="حفظ" className="actions-first-btn" type="filled" action={createChapter}/>
           <Button title="إلغاء" type="empty" action={closeModal}/>
         </div>
       </div>

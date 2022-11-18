@@ -5,8 +5,12 @@
   border: 1px solid #dedede;
   border-radius: 5px;
   text-align: end;
-  Overflow: hidden;
+  overflow: hidden;
   cursor: pointer;
+}
+.chapter img {
+  width: 289px;
+  height: 186px;
 }
 .chapter h2 {
   font-weight: 700;
@@ -18,7 +22,7 @@
 .chapter p {
   font-weight: 400;
   font-size: 18px;
-  line-height: 24px;  
+  line-height: 24px;
   margin: 0px 11px;
-  text-overflow: ellipsis; 
+  text-overflow: ellipsis;
 }
