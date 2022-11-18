@@ -1,0 +1,129 @@
+.AddChapterDialog {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  background: rgba(0, 0, 0, 0.66);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.AddChapterDialog .container {
+  width: 754px;
+  height: 557px;
+  background: #fafafa;
+  border-radius: 21px;
+}
+
+.container header {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #dedede;
+  padding: 9px 30px;
+}
+header h1 {
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 23px;
+  margin: 0;
+}
+header img {
+  cursor: pointer;
+}
+.upload-pic {
+  display: flex;
+  padding: 50px 30px 40px 0px;
+  flex-direction: row-reverse;
+  gap: 30px;
+}
+.upload-file {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+.upload-pic img {
+  width: 78px;
+  height: 78px;
+  object-fit: cover;
+  border-radius: 100%;
+}
+.upload-pic > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+.max-size {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  margin-top: 20px;
+}
+input[type="file"] {
+  display: none;
+}
+.custom-file-upload {
+  display: block;
+  margin-left: 21px;
+  border: 2px solid #ebebeb;
+  border-radius: 10px;
+  padding: 14px 47px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 18px;
+}
+
+.upload-file .file-name {
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 18px;
+  color: #8e8e8e;
+  max-width: 100px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.chapter-name {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 0 30px 0px 44px;
+}
+
+.chapter-description {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 0 30px 0px 44px;
+}
+.inputLabel {
+  font-weight: 500;
+  font-size: 13px;
+  color: #808295;
+  line-height: 16px;
+  margin-bottom: 10px;
+}
+
+.chapter-description textarea {
+  resize: none;
+  padding: 10px;
+  width: 100%;
+  border: 1px solid #dedede;
+  border-radius: 6px;
+  font-family: "Tajwal", sans-serif;
+}
+.chapter-name input {
+  height: 46px;
+  padding-right: 10px;
+  margin-bottom: 22px;
+  width: 100%;
+  border: 1px solid #dedede;
+  border-radius: 6px;
+  font-size: 18px;
+  font-family: "Tajwal", sans-serif;
+}
