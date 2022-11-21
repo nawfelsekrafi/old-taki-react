@@ -11,14 +11,32 @@ const Chapters = () => {
   const [title, setTitle] = useState('');
   const [image, setImage] = useState(null);
   const [description, setDescription] = useState('');
+  const [itemToEdit, SetItemToEdit] = useState(null);
 
   const openModal = () => {
     setIsModalOpen(true);
   };
 
   const closeModal = () => {
+    setImage(null);
+    setDescription(null);
+    setTitle(null);
+    SetItemToEdit(null);
     setIsModalOpen(false);
   };
+
+  const saveEditChapter = ()=>{
+    let index = chapters.indexOf(itemToEdit);
+    let chapter ={
+      title: title,
+      image: image,
+      description: description,
+    }
+    console.log(chapter)
+    chapters[index] = chapter;
+    setChapters(chapters);
+    closeModal();
+  }
 
   const createChapter = () => {
     let newChapter = {
@@ -30,10 +48,8 @@ const Chapters = () => {
     setChapters((chapters)=>{
       return [...chapters, newChapter]
     })
-    setImage(null);
-    setDescription(null);
-    setTitle(null);
-    setIsModalOpen(false)
+    closeModal();
+    
   };
 
   const editChapterTitle = (value) => {
@@ -43,9 +59,16 @@ const Chapters = () => {
   const editChapterDescription = (value) => {
     setDescription(value);
   };
-  // const EditChapter =() => {
-
-  // }
+  const editChapter = (item) => {
+    SetItemToEdit(item);
+    openModal();
+  }
+  const deleteChatper = () =>{
+    setChapters((chapters)=>{
+      return chapters.filter((item)=> item !== itemToEdit) ;
+    });
+    closeModal();
+  }
 
   return (
     <div className="page">
@@ -55,16 +78,19 @@ const Chapters = () => {
       </div>
       <div className="chapters">
         {chapters.map((item, index) => {
-          return <Chapter {...item} key={index} />;
+          return <Chapter item={item} key={index} editChapter={editChapter}/>;
         })}
       </div>
       {isModalOpen && (
         <AddChapterDialog
+          item={itemToEdit}
           editChapterDescription={editChapterDescription}
           editChapterTitle={editChapterTitle}
           setImage={setImage}
           closeModal={closeModal}
           createChapter={createChapter}
+          saveEditChapter={saveEditChapter}
+          deleteChatper={deleteChatper}
         />
       )}
     </div>

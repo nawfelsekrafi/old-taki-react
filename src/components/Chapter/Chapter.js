@@ -1,11 +1,11 @@
 import './index.css';
 
-const Chapter = ({title, image, description}) => {
+const Chapter = ({item, editChapter}) => {
   return (
-    <div className="chapter">
-      <img src={image} alt={title} />
-      <h2>{title}</h2>
-      <p>{description}</p>
+    <div className="chapter" onClick={()=>editChapter(item)}>
+      <img src={item.image} alt={item.title} />
+      <h2>{item.title}</h2>
+      <p>{item.description}</p>
     </div>
   )
 }

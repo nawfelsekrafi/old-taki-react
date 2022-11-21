@@ -2,10 +2,12 @@ import "./index.css";
 import Button from "../Button/Button";
 import { useEffect, useState } from "react";
 
-const AddChapterDialog = ({closeModal, createChapter, editChapterDescription, editChapterTitle, setImage}) => {
+const AddChapterDialog = ({item, deleteChatper,closeModal, createChapter, editChapterDescription, editChapterTitle, setImage, saveEditChapter}) => {
   const [name, setName] = useState("لم يتم إختيار ملف");
   const [selectedFile, setSelectedFile] = useState(null);
   const [imgSrc, setImgSrc] = useState(null);
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
 
   useEffect(() => {
     if (selectedFile?.name) {
@@ -13,6 +15,26 @@ const AddChapterDialog = ({closeModal, createChapter, editChapterDescription, ed
       readFile(selectedFile);
     }
   });
+
+  useEffect(()=>{
+    if(item){
+      setName(item.title);
+      setTitle(item.title);
+      editChapterTitle(item.title);
+      setImgSrc(item.image);
+      setImage(item.image);
+      setDescription(item.description);
+      editChapterDescription(item.description);
+    }
+  },[])
+  const editTitle = (e)=> {
+    editChapterTitle(e.target.value);
+    setTitle(e.target.value);
+  }
+  const editDescription = (e)=> {
+    editChapterDescription(e.target.value);
+    setDescription(e.target.value);
+  }
 
   const readFile = (file) => {
     const reader = new FileReader();
@@ -35,7 +57,7 @@ const AddChapterDialog = ({closeModal, createChapter, editChapterDescription, ed
     <div className="AddChapterDialog">
       <div className="container">
         <header>
-          <h1>أضف فصل جديد</h1>
+          <h1>{title? 'تعديل بيانات الفصل': 'أضف فصل جديد' } </h1>
           <img src="assets/icons/close.svg" alt="close dialog" onClick={closeModal}/>
         </header>
         <div className="upload-pic">
@@ -61,13 +83,13 @@ const AddChapterDialog = ({closeModal, createChapter, editChapterDescription, ed
           <label htmlFor="chapterName" className="inputLabel">
             إسم الفصل
           </label>
-          <input dir="rtl" type="text" onChange={(e)=>{editChapterTitle(e.target.value)}} name="chapterName" id="chapterName" />
+          <input dir="rtl" type="text" value={title || ' '} onChange={(e)=>{editTitle(e)}} name="chapterName" id="chapterName" />
         </div>
         <div className="chapter-description">
           <label htmlFor="chapterDescription" className="inputLabel">
             وصف
           </label>
-          <textarea onChange={(e)=>{editChapterDescription(e.target.value)}}
+          <textarea  value ={description || ' '} onChange={(e)=>{editDescription(e)}}
             dir="rtl"
             name="chapterDescription"
             id="chapterDescription"
@@ -76,8 +98,9 @@ const AddChapterDialog = ({closeModal, createChapter, editChapterDescription, ed
           ></textarea>
         </div>
         <div className="actions">
-          <Button title="حفظ" className="actions-first-btn" type="filled" action={createChapter}/>
-          <Button title="إلغاء" type="empty" action={closeModal}/>
+          <Button title="حفظ" className="actions-first-btn" type="filled" action={item ? saveEditChapter : createChapter}/>
+          {!item && <Button title="إلغاء" type="empty" action={closeModal}/>}
+          {item && <Button title="حذف" type="delete" action={deleteChatper}/>}
         </div>
       </div>
     </div>
