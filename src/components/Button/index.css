@@ -1,8 +1,7 @@
-.filled {
+.taki-btn {
   all: unset;
   width: fit-content;
   height: 51px;
-  background: #2e6ff1;
   border-radius: 10px;
   font-weight: 700;
   font-size: 15px;
@@ -11,24 +10,22 @@
   padding: 0 65px;
   align-items: center;
   text-align: center;
-  color: #ffffff;
   cursor: pointer;
 }
 
+.filled {
+  background: #2e6ff1;
+  color: #ffffff;
+}
+
 .empty {
-  all: unset;
-  width: fit-content;
-  height: 51px;
   background: transparent;
-  border-radius: 10px;
-  font-weight: 700;
-  font-size: 15px;
-  line-height: 18px;
-  display: flex;
-  padding: 0 65px;
-  align-items: center;
-  text-align: center;
-  border: 1px solid #DEDEDE;
+  border: 1px solid #dedede;
   color: #484848;
-  cursor: pointer;
+}
+
+.delete {
+  background: transparent;
+  border: 1px solid #e70013;
+  color: #e70013;
 }
