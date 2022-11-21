@@ -3,7 +3,7 @@ import './index.css';
 const Button = ({title, type, action}) => {
   
   return (
-    <button className={type} onClick={action}>
+    <button className={`taki-btn ${type}`} onClick={action}>
         {title}
     </button>
   )
