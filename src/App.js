@@ -7,6 +7,7 @@ import Courses from "./Pages/Courses/Courses";
 import Levels from "./Pages/Levels/Levels";
 import Users from "./Pages/Users/Users";
 import Settings from "./Pages/Settings/Settings";
+import FavChapters from "./Pages/FavChapters/FavChapters";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/levels" element={<Levels />} />
           <Route path="/users" element={<Users />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path="/favorite-chapters" element={<FavChapters />} />
         </Routes>
       </div>
     </BrowserRouter>

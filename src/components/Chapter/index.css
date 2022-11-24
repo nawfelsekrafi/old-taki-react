@@ -7,7 +7,9 @@
   text-align: end;
   overflow: hidden;
   cursor: pointer;
+  position: relative;
 }
+
 .chapter img {
   width: 289px;
   height: 186px;
@@ -25,4 +27,17 @@
   line-height: 24px;
   margin: 0px 11px;
   text-overflow: ellipsis;
+}
+
+.favorite-icon-empty, .favorite-icon-filled {
+  position: absolute;
+  top:8px;
+  left: 8px;
+  cursor: pointer;
+}
+.favorite-icon-empty path {
+  fill: white;
+}
+.favorite-icon-filled path {
+  fill: red;
 }

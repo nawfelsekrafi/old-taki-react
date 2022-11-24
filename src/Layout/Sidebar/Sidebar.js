@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import './index.css';
+import FavoriteBorderRoundedIcon from "@mui/icons-material/FavoriteBorderRounded";
 
 const Sidebar = () => {
   return (
@@ -200,6 +201,12 @@ const Sidebar = () => {
               />
             </svg>
             <p>إعدادات</p>
+          </div>
+        </NavLink>
+        <NavLink to="/favorite-chapters">
+          <div className="sidebar-item">
+          <FavoriteBorderRoundedIcon />
+            <p>الفصول المفضلة</p>
           </div>
         </NavLink>
       </div>
