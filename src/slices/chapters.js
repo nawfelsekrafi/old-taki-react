@@ -19,7 +19,6 @@ export const fetchChapters = createAsyncThunk(
       }
       throw new Error(response.statusText);
     } catch (err) {
-      console.log(err);
       return Promise.reject(err.message ? err.message : " ");
     }
   }
@@ -29,10 +28,8 @@ export const toggleLikeChapter = createAsyncThunk(
   "chapter/update",
   async (id) => {
     try {
-      console.log('idfo',id)
       const res = await axios.put(`/api/chapter`, {"id":id})
       const data = await res.data;
-      console.log(data);
       return data;
     } catch (error) {
       return Promise.reject(error.message ? error.message : " ");
@@ -62,6 +59,7 @@ const slice = createSlice({
     },
     [toggleLikeChapter.fulfilled]: (state, action) => {
       state.status = "succeeded";
+      state.chapters = action.payload.chapters;
     },
     [toggleLikeChapter.rejected]: (state, action) => {
       state.status = "failed";

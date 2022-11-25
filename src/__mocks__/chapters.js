@@ -56,8 +56,7 @@ const chapters = [
 
 mock.onGet("/api/chapters").reply((config) => {
   try {
-    console.log("GET Request: /api/chapters");
-    
+    console.log("GET Request: /api/chapters"); 
     return [
       200,
       {
@@ -73,20 +72,16 @@ mock.onPut("/api/chapter").reply(async(config) => {
   try {
     const {id} = JSON.parse(config.data);
     console.log("PUT Request: /api/chapters");
-    console.log(id);
 
     const index = chapters.findIndex(chapter => chapter.id === id);
     chapters[index] = {
       ...chapters[index], "isFavorite": !chapters[index].isFavorite
     };
-
-    console.log(chapters)
     
     return [
       204,
       {
-        status: "OK",
-        data: "Chapter Updated Successfully",
+        chapters
       },
     ];
   } catch (err) {

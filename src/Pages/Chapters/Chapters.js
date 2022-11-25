@@ -17,6 +17,7 @@ const Chapters = () => {
   const [description, setDescription] = useState("");
   const [itemToEdit, SetItemToEdit] = useState(null);
   const { status, error } = useSelector((state) => state.chapters);
+  const chptrs = useSelector((state) => state.chapters.chapters);
 
   const dispatch = useDispatch();
 
@@ -27,11 +28,14 @@ const Chapters = () => {
   const fetch_Chapters = () => {
     dispatch(fetchChapters());
   };
+  useEffect(() => {
+    if (chptrs) {
+      setChapters(chptrs);
+    }
+  }, [chptrs]);
 
   const toggleFavoriteChapter = (id) => {
     dispatch(toggleLikeChapter(id));
-
-    return 1;
   };
 
   useEffect(() => {
@@ -39,12 +43,6 @@ const Chapters = () => {
       fetch_Chapters();
     }
   }, [status]);
-
-  useEffect(() => {
-    if (status === "idle") {
-      fetch_Chapters();
-    }
-  }, []);
 
   const closeModal = () => {
     setImage(null);
@@ -61,7 +59,6 @@ const Chapters = () => {
       image: image,
       description: description,
     };
-    console.log(chapter);
     chapters[index] = chapter;
     setChapters(chapters);
     closeModal();
@@ -72,6 +69,8 @@ const Chapters = () => {
       title: title,
       image: image,
       description: description,
+      id: Date.now(),
+      isFavorite: false
     };
 
     setChapters((chapters) => {
